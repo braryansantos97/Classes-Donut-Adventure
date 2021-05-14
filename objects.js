@@ -29,31 +29,64 @@ class Person {
     return this.name;
   }
   getAge() {
-    return this.age
+    return this.age;
   }
   getWeight() {
-    return this.weight
+    return this.weight;
   }
-  greet() {
-    console.log(`Hi ${this.name}`);
+  greet(otherPerson) {
+    console.log(`Hi ${otherPerson.name}`);
   }
-  eat() {
+  eat(num) {
+    let totalEat = [];
+    for (let i = 0; i < num; i++) {
     this.weight++;
     this.mood++;
+    totalEat.push(i)
+    }
+  console.log(this.name + ' ate ' + totalEat.length + ' times!');
   }
-  exercise() {
+  exercise(num) {
+    let totalExercise = [];
+    for (let i = 0; i < num; i++) {
     this.weight--
+    totalExercise.push(i)
+    }
+    console.log(this.name + ' exercised ' + totalExercise.length + ' times!');
   }
-  ageUP() {
+  ageUP(num) {
+    let totalAgeUp = [];
+    for (let i = 0; i < num; i++) {
     this.age ++;
     this.height++;
     this.weight++;
     this.mood--;
     this.bankAccount+=10;
+    totalAgeUp.push(i)
+    }
+    console.log(this.name + ' grew up ' + totalAgeUp.length + ' years!')
   }
   buyHamster(hamster) {
+    {
     this.hamsters.push(hamster)
     this.mood+=10;
     this.bankAccount -= hamster.getPrice()
+    }
+  console.log(this.name + ' bought ' + hamster.name);
   }
 }
+
+const timmy = new Person('Timmy')
+timmy.ageUP(5)
+timmy.eat(5)
+timmy.exercise(5)
+timmy.ageUP(9)
+
+const gus = new Hamster('Gus');
+gus.owner = 'Timmy';
+timmy.buyHamster(gus)
+timmy.ageUP(15)
+timmy.eat(2)
+timmy.exercise(2)
+
+console.log(timmy)
